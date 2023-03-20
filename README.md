@@ -1,2 +1,2 @@
-Study Planner
+Study Planner 
 -automating subject selection
