@@ -1,5 +1,4 @@
-Study Planner 
--automating subject selection
+# Study Planner
 
 # Setting up Python virtual environment
 
