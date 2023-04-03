@@ -1,21 +1,20 @@
 # Study Planner
 
 # Setting up Python virtual environment
-
+## Windows
 ```
 py -m pip install --user virtualenv
 ```
-
 ## Mac
 ```
 python3 -m pip install --user virtualenv
 ```
-### Activate the environment
+
+## Activate the environment
 ## Windows
 ```
 .\env\Scripts\activate
 ```
-
 ## Mac
 ```
 source env/bin/activate
