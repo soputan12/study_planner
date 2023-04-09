@@ -16,11 +16,13 @@ row_counter = 0
 # df.index = index
 # print(df)
 test = df.loc[:, "sp51_23"]
+test_list = []
 for i in test:
     if i == 1:
-        print("yes")
+        test_list.append("yes")
     else:
-        print("no")
+        test_list.append("no")
+print(test_list)
 
 
 # while subject_counter <= 4:
