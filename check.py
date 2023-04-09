@@ -71,7 +71,7 @@ def main():
     subject_list = create_subject_list(df)
     while subject_counter < 4: # end condition for loop
         current_subject = str(subject_list[row_counter])
-        if current_subject in taken_subject_list:
+        if current_subject in taken_subject_list: # checks if current subjected has already been taken
             row_counter += 1
             continue
         else:
@@ -95,7 +95,6 @@ def main():
             else:
                 row_counter += 1 # if 0 skip to next row
     taken_subject_list.append(current_sp_subjects)
-    # current_sp_subjects = get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list)
     print(current_sp_subjects)
 
 
