@@ -32,9 +32,18 @@ for i in subjects: # adds all subject codes into a list
 print(len(subject_list))
 while subject_counter < 4: # end condition for loop
     if test_list[row_counter] == 1: # if there is 1 in the specific cell
-        taken_list.append(subject_list[row_counter]) # add to taken subject list
-        subject_counter += 1 # increase counter by 1
+        if "CP1404" == subject_list[row_counter]:
+            if "CP1401" in taken_list:
+                taken_list.append(subject_list[row_counter])
+                subject_counter += 1
+                row_counter += 1
+        else:
+            taken_list.append(subject_list[row_counter]) # add to taken subject list
+            subject_counter += 1 # increase counter by 1
+            row_counter += 1
+    else:
         row_counter += 1
+    
 print(taken_list)
 
 # while subject_counter <= 4:
