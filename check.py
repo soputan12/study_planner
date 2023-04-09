@@ -15,15 +15,26 @@ row_counter = 0
 # index = ['CP1401', 'CP1402', 'CP1404', 'CP1406', 'MA1000', 'MA1020', 'MA1580', 'CP1409', 'CP1410', 'CP2403', 'CP2404', 'CP2406', 'CP2409', 'CP2421', 'CP2422', 'CP2423', 'CP2424', 'CP3403', 'CP3405', 'CP3406', 'CP3407', 'CP3414', 'CP3415', 'CP3416', 'CP3417', 'CP3418']
 # df.index = index
 # print(df)
-test = df.loc[:, "sp51_23"]
-test_list = []
-for i in test:
+test = df.loc[:, "sp51_23"] #pandas magic, returns the sp51_23 row
+test_list = [] # list to add the sp51_23 stuff into a list
+for i in test: # loop to add all the stuff into list
     if i == 1:
-        test_list.append("yes")
+        test_list.append(1)
     else:
-        test_list.append("no")
-print(test_list)
+        test_list.append(9)
+print(len(test_list))
 
+subject_list = [] 
+taken_list = [] # subjects your taking in this sp
+subjects = df.loc[:, "subject_code"] # returns the stuff in subject_code
+for i in subjects: # adds all subject codes into a list
+    subject_list.append(i)
+print(len(subject_list))
+while subject_counter < 4: # end condition for loop
+    if test_list[subject_counter] == 1: # if there is 1 in the specific cell
+        taken_list.append(subject_list[subject_counter]) # add to taken subject list
+        subject_counter += 1 # increase counter by 1
+print(taken_list)
 
 # while subject_counter <= 4:
 #     print("while loop works")
