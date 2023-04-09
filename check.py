@@ -12,13 +12,21 @@ row_counter = 0
 #if counter  [10]: SPECIAL CHECK FOR CREDIT POINT ROWS 
     #if row[1] in taken_subject_list and credit_point >= 12:
 
-print(df.iloc[1])
+# index = ['CP1401', 'CP1402', 'CP1404', 'CP1406', 'MA1000', 'MA1020', 'MA1580', 'CP1409', 'CP1410', 'CP2403', 'CP2404', 'CP2406', 'CP2409', 'CP2421', 'CP2422', 'CP2423', 'CP2424', 'CP3403', 'CP3405', 'CP3406', 'CP3407', 'CP3414', 'CP3415', 'CP3416', 'CP3417', 'CP3418']
+# df.index = index
+# print(df)
+test = df.loc[:, "sp51_23"]
+for i in test:
+    if i == 1:
+        print("yes")
+    else:
+        print("no")
+
 
 # while subject_counter <= 4:
 #     print("while loop works")
 #     for row in df:
-#         print("row for loop works")
-#         if row_counter == 0:
+#         print("row for loop works")        if row_counter == 0:
 #             pass
 #         # if row[0] not in taken_subject_list: # check whether subject has been taken before
 #         #     print("subject code loop")
