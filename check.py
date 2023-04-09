@@ -1,4 +1,4 @@
-import pandas as pd #comment
+import pandas as pd 
 import numpy as np
 
 
@@ -31,9 +31,10 @@ for i in subjects: # adds all subject codes into a list
     subject_list.append(i)
 print(len(subject_list))
 while subject_counter < 4: # end condition for loop
-    if test_list[subject_counter] == 1: # if there is 1 in the specific cell
-        taken_list.append(subject_list[subject_counter]) # add to taken subject list
+    if test_list[row_counter] == 1: # if there is 1 in the specific cell
+        taken_list.append(subject_list[row_counter]) # add to taken subject list
         subject_counter += 1 # increase counter by 1
+        row_counter += 1
 print(taken_list)
 
 # while subject_counter <= 4:
