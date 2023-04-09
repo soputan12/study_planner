@@ -22,28 +22,38 @@ for i in test: # loop to add all the stuff into list
         test_list.append(1)
     else:
         test_list.append(9)
-print(len(test_list))
 
 subject_list = [] 
 taken_list = [] # subjects your taking in this sp
 subjects = df.loc[:, "subject_code"] # returns the stuff in subject_code
 for i in subjects: # adds all subject codes into a list
     subject_list.append(i)
-print(len(subject_list))
+
 while subject_counter < 4: # end condition for loop
-    if test_list[row_counter] == 1: # if there is 1 in the specific cell
-        if "CP1404" == subject_list[row_counter]:
-            if "CP1401" in taken_list:
-                taken_list.append(subject_list[row_counter])
-                subject_counter += 1
-                row_counter += 1
-        else:
-            taken_list.append(subject_list[row_counter]) # add to taken subject list
+    current_subject = str(subject_list[row_counter])
+    if current_subject in taken_subject_list:
+        row_counter += 1
+        pass
+    else:
+        if test_list[row_counter] == 1: # if there is 1 in the specific cell
+            if current_subject == "CP1404":
+                print("1404 check")
+                if "CP1401" in taken_subject_list:
+                    print("checked 1404")
+                    taken_list.append(current_subject)
+                    subject_counter += 1
+                    row_counter += 1
+                else:
+                    print("skip")
+                    row_counter += 1
+                    pass
+            taken_list.append(current_subject) # add to taken subject list
             subject_counter += 1 # increase counter by 1
             row_counter += 1
-    else:
-        row_counter += 1
-    
+        else:
+            row_counter += 1
+taken_subject_list.append(taken_list)
+print(taken_subject_list)
 print(taken_list)
 
 # while subject_counter <= 4:
