@@ -1,5 +1,5 @@
-import pandas as pd 
-import numpy as np # test2
+import pandas as pd #comment
+import numpy as np
 
 
 data = pd.read_csv("subjects.csv")
@@ -22,21 +22,19 @@ for i in test: # loop to add all the stuff into list
         test_list.append(1)
     else:
         test_list.append(9)
+print(len(test_list))
 
 subject_list = [] 
 taken_list = [] # subjects your taking in this sp
 subjects = df.loc[:, "subject_code"] # returns the stuff in subject_code
-
 for i in subjects: # adds all subject codes into a list
     subject_list.append(i)
-
+print(len(subject_list))
 while subject_counter < 4: # end condition for loop
     if test_list[subject_counter] == 1: # if there is 1 in the specific cell
         taken_list.append(subject_list[subject_counter]) # add to taken subject list
         subject_counter += 1 # increase counter by 1
 print(taken_list)
-
-
 
 # while subject_counter <= 4:
 #     print("while loop works")
