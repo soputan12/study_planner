@@ -21,7 +21,7 @@ def create_subject_list(df): # creates a list with subject codes for indexing
 def get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list, current_sp_subjects): # function to get sp51 2023 subjects
     while subject_counter < 4: # end condition for loop
         current_subject = str(subject_list[row_counter])
-        if current_subject in taken_subject_list: # checks if current subjected has already been taken
+        if current_subject in str(taken_subject_list): # checks if current subjected has already been taken
             row_counter += 1
             continue
         else:
@@ -62,21 +62,22 @@ def sp52_availability(df): # creates a list for sp51 2023 availability
     return sp52_23_list
 
 def get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_list, taken_subject_list, current_sp_subjects): # function to get sp51 2023 subjects
+    current_sp_subjects = []
     while subject_counter < 4: # end condition for loop
         current_subject = str(subject_list[row_counter])
-        if current_subject in taken_subject_list: # checks if current subjected has already been taken
+        if current_subject in str(taken_subject_list): # checks if current subjected has already been taken
             row_counter += 1
             continue
         else:
             if sp52_23_list[row_counter] == 1: # if there is 1 in the specific cell
-                if current_subject == "CP1404":
-                    if "CP1401" in taken_subject_list:
-                        current_sp_subjects.append(current_subject)
-                        subject_counter += 1
-                        row_counter += 1
-                    else:
-                        row_counter += 1
-                        pass
+                check = check_prerequisites(current_subject, taken_subject_list)
+                if check == True:
+                    current_sp_subjects.append(current_subject)
+                    subject_counter += 1
+                    row_counter += 1
+                elif check == False:
+                    row_counter += 1
+                    continue
                 else:
                     current_sp_subjects.append(current_subject) # add to taken subject list
                     subject_counter += 1 # increase counter by 1
@@ -106,7 +107,9 @@ def main():
     """ TODO: change subject checker to class in future """
     sp51_subjects = get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list, current_sp_subjects)
     taken_subject_list.append(sp51_subjects)
-    #sp52_23_list = sp51_availability(df)
+    sp52_23_list = sp51_availability(df)
+    sp52_subjects = get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_list, taken_subject_list, current_sp_subjects)
+    taken_subject_list.append(sp52_subjects)
     print(taken_subject_list)
 
 
