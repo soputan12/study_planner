@@ -44,7 +44,7 @@ def get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_lis
 
 def check_prerequisites(current_subject, taken_subject_list): # function to check prerequisites, only checking for CP1401 atm
     if current_subject == "CP1404":
-        if "CP1401" in taken_subject_list:
+        if "CP1401" in str(taken_subject_list):
             return True
         else:
             return False
