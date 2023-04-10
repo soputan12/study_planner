@@ -8,7 +8,7 @@ def sp51_availability(df): # creates a list for sp51 2023 availability
         if i == 1:
             sp51_23_list.append(1)
         else:
-            sp51_23_list.append(9)
+            sp51_23_list.append(0)
     return sp51_23_list
 
 def create_subject_list(df): # creates a list with subject codes for indexing
@@ -26,14 +26,14 @@ def get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_lis
             continue
         else:
             if sp51_23_list[row_counter] == 1: # if there is 1 in the specific cell
-                if current_subject == "CP1404":
-                    if "CP1401" in taken_subject_list:
-                        current_sp_subjects.append(current_subject)
-                        subject_counter += 1
-                        row_counter += 1
-                    else:
-                        row_counter += 1
-                        pass
+                check = check_prerequisites(current_subject, taken_subject_list)
+                if check == True:
+                    current_sp_subjects.append(current_subject)
+                    subject_counter += 1
+                    row_counter += 1
+                elif check == False:
+                    row_counter += 1
+                    continue
                 else:
                     current_sp_subjects.append(current_subject) # add to taken subject list
                     subject_counter += 1 # increase counter by 1
@@ -48,7 +48,42 @@ def check_prerequisites(current_subject, taken_subject_list): # function to chec
             return True
         else:
             return False
-        
+    else:
+        return "skip"
+
+def sp52_availability(df): # creates a list for sp51 2023 availability
+    sp52_23_availability = df.loc[:, "sp52_23"] #pandas magic, returns the sp51_23 row
+    sp52_23_list = [] # list to add the sp51_23 stuff into a list
+    for i in sp52_23_availability: # loop to add all the stuff into list
+        if i == 1:
+            sp52_23_list.append(1)
+        else:
+            sp52_23_list.append(0)
+    return sp52_23_list
+
+def get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_list, taken_subject_list, current_sp_subjects): # function to get sp51 2023 subjects
+    while subject_counter < 4: # end condition for loop
+        current_subject = str(subject_list[row_counter])
+        if current_subject in taken_subject_list: # checks if current subjected has already been taken
+            row_counter += 1
+            continue
+        else:
+            if sp52_23_list[row_counter] == 1: # if there is 1 in the specific cell
+                if current_subject == "CP1404":
+                    if "CP1401" in taken_subject_list:
+                        current_sp_subjects.append(current_subject)
+                        subject_counter += 1
+                        row_counter += 1
+                    else:
+                        row_counter += 1
+                        pass
+                else:
+                    current_sp_subjects.append(current_subject) # add to taken subject list
+                    subject_counter += 1 # increase counter by 1
+                    row_counter += 1
+            else:
+                row_counter += 1 # if 0 skip to next row
+    return current_sp_subjects        
 
 def main():
     data = pd.read_csv("subjects.csv")
@@ -68,8 +103,10 @@ def main():
 
     sp51_23_list = sp51_availability(df)
     subject_list = create_subject_list(df)
+    """ TODO: change subject checker to class in future """
     sp51_subjects = get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list, current_sp_subjects)
     taken_subject_list.append(sp51_subjects)
+    #sp52_23_list = sp51_availability(df)
     print(taken_subject_list)
 
 
