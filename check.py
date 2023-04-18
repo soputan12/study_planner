@@ -1,6 +1,38 @@
 import pandas as pd 
 import numpy as np
 
+def check_prerequisites(current_subject, taken_subject_list): # function to check prerequisites, only checking for CP1401 atm
+    taken_subjects = str(taken_subject_list)
+    credit_point = len(taken_subject_list) * 3
+    if current_subject == "CP1404":
+        if "CP1401" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "MA1000":
+        if "MA1020" in taken_subjects:
+            return False
+    elif current_subject == "MA1020":
+        if "MA1000" in taken_subjects:
+            return False
+    elif current_subject == "MA1580":
+        if "MA1000" or "MA1020" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP1410":
+        if "CP1402" and "CP1409" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP2403":
+        if credit_point >= 12:
+            return True
+        else:
+            return False
+    else:
+        return "skip"
+
 def sp51_availability(df): # creates a list for sp51 2023 availability
     sp51_23_availability = df.loc[:, "sp51_23"] #pandas magic, returns the sp51_23 row
     sp51_23_list = [] # list to add the sp51_23 stuff into a list
@@ -41,38 +73,6 @@ def get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_lis
             else:
                 row_counter += 1 # if 0 skip to next row
     return current_sp_subjects
-
-def check_prerequisites(current_subject, taken_subject_list): # function to check prerequisites, only checking for CP1401 atm
-    taken_subjects = str(taken_subject_list)
-    credit_point = len(taken_subject_list) * 3
-    if current_subject == "CP1404":
-        if "CP1401" in taken_subjects:
-            return True
-        else:
-            return False
-    elif current_subject == "MA1000":
-        if "MA1020" in taken_subjects:
-            return False
-    elif current_subject == "MA1020":
-        if "MA1000" in taken_subjects:
-            return False
-    elif current_subject == "MA1580":
-        if "MA1000" or "MA1020" in taken_subjects:
-            return True
-        else:
-            return False
-    elif current_subject == "CP1410":
-        if "CP1402" and "CP1409" in taken_subjects:
-            return True
-        else:
-            return False
-    elif current_subject == "CP2403":
-        if credit_point >= 12:
-            return True
-        else:
-            return False
-    else:
-        return "skip"
 
 def sp52_availability(df): # creates a list for sp51 2023 availability
     sp52_23_availability = df.loc[:, "sp52_23"] #pandas magic, returns the sp51_23 row
