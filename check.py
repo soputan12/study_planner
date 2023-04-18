@@ -61,6 +61,57 @@ def check_prerequisites(current_subject, taken_subject_list): # function to chec
             return True
         else:
             return False
+    elif current_subject == "CP3403":
+        if "CP2403" and "CP2404" in taken_subjects or credit_point >= 18:
+            return True
+        else:
+            return False
+    elif current_subject == "CP3405":
+        if "CP2408" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP3406":
+        if "CP1404" in taken_subjects and credit_point >= 18:
+            return True
+        else:
+            return False
+    elif current_subject == "CP3407":
+        if "CP1404" in taken_subjects and credit_point >= 18:
+            return True
+        else:
+            return False
+    elif current_subject == "CP3414":
+        if "CP2422" and "CP2423" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP3415":
+        if "CP2424" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP3416": # Behavioural Cybersecurity 
+        if "CP3417" in taken_subjects: # Elective
+            return False
+        else:
+            if credit_point >= 36:
+                return True
+            else:
+                return False
+    elif current_subject == "CP3417": # Operational Tech
+        if "CP3416" in taken_subjects: # Elective
+            return False
+        else:
+            if "CP2423" in taken_subjects:
+                return True
+            else:
+                return False
+    elif current_subject == "CP3418":
+        if "CP3414" in taken_subjects:
+            return True
+        else:
+            return False
     else:
         return "skip"
 
