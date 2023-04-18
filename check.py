@@ -1,9 +1,10 @@
 import pandas as pd 
 import numpy as np
 
+""" TODO: change subject checker to class in future """
 def check_prerequisites(current_subject, taken_subject_list): # function to check prerequisites, only checking for CP1401 atm
-    taken_subjects = str(taken_subject_list)
-    credit_point = len(taken_subject_list) * 3
+    taken_subjects = str(taken_subject_list) # made life a bit easier by making this into a var
+    credit_point = len(taken_subject_list) * 3 # calculate credit points: 1 subject = 3 credit points
     if current_subject == "CP1404":
         if "CP1401" in taken_subjects:
             return True
@@ -162,7 +163,6 @@ def main():
 
     sp51_23_list = sp51_availability(df)
     subject_list = create_subject_list(df)
-    """ TODO: change subject checker to class in future """
     sp51_subjects = get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list, current_sp_subjects)
     taken_subject_list.extend(sp51_subjects)
     sp52_23_list = sp52_availability(df)
