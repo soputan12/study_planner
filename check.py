@@ -31,6 +31,36 @@ def check_prerequisites(current_subject, taken_subject_list): # function to chec
             return True
         else:
             return False
+    elif current_subject == "CP2406":
+        if "CP1404" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP2409":
+        if "CP1402" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP2421":
+        if "CP1401" and "MA1580" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP2422":
+        if "CP1401" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP2423":
+        if "CP1401" and "CP1410" in taken_subjects:
+            return True
+        else:
+            return False
+    elif current_subject == "CP2424":
+        if "CP1410" and credit_point >= 12:
+            return True
+        else:
+            return False
     else:
         return "skip"
 
