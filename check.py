@@ -192,7 +192,7 @@ def get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_lis
     return current_sp_subjects
 
 def sp53_availability(df): 
-    sp53_23_availability = df.loc[:, "sp52_23"] 
+    sp53_23_availability = df.loc[:, "sp53_23"] 
     sp53_23_list = [] 
     for i in sp53_23_availability: # loop to add all the stuff into list
         if i == 1:
