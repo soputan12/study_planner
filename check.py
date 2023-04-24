@@ -309,6 +309,8 @@ def sp53_24_availability(df):
 def get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_list, taken_subject_list, current_sp_subjects): 
     current_sp_subjects = []
     while subject_counter < 4: # end condition for loop
+        if row_counter == 26:
+            break
         current_subject = str(subject_list[row_counter])
         if current_subject in str(taken_subject_list): # checks if current subjected has already been taken
             row_counter += 1
@@ -365,7 +367,7 @@ def main():
 
 
     print(taken_subject_list)
-    print(len(taken_subject_list) / 4)
+    print(len(taken_subject_list))
 
 
 main()              
