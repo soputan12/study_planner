@@ -10,14 +10,13 @@
         {% if title %}
         <title>{{ title }} Study Planner</title>
         {% else %}
-        <title>Study Planner Home</title>
+        <title>Study Planner</title>
         {% endif %}
     </head>
     <body>
-        {% extends "base.html" %}
-        {% block content %}
-        <h1>Home page</h1>
-        {% endblock %}
+        <div>To Home Page: <a href="/index">Home</a></div>
+        <hr>
+        {% block content %}{% endblock %}
         
         <script src="" async defer></script>
     </body>
