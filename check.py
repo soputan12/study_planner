@@ -224,7 +224,42 @@ def get_sp53_23_subjects(subject_counter, row_counter, subject_list, sp53_23_lis
                     row_counter += 1
             else:
                 row_counter += 1 # if 0 skip to next row
-    return current_sp_subjects   
+    return current_sp_subjects  
+
+def sp51_24_availability(df): 
+    sp51_24_availability = df.loc[:, "sp51_24"] 
+    sp51_24_list = [] 
+    for i in sp51_24_availability: # loop to add all the stuff into list
+        if i == 1:
+            sp51_24_list.append(1)
+        else:
+            sp51_24_list.append(0)
+    return sp51_24_list     
+
+def get_sp51_24_subjects(subject_counter, row_counter, subject_list, sp51_24_list, taken_subject_list, current_sp_subjects): 
+    current_sp_subjects = []
+    while subject_counter < 4: # end condition for loop
+        current_subject = str(subject_list[row_counter])
+        if current_subject in str(taken_subject_list): # checks if current subjected has already been taken
+            row_counter += 1
+            continue
+        else:
+            if sp51_24_list[row_counter] == 1: # if there is 1 in the specific cell
+                check = check_prerequisites(current_subject, taken_subject_list)
+                if check == True:
+                    current_sp_subjects.append(current_subject)
+                    subject_counter += 1
+                    row_counter += 1
+                elif check == False:
+                    row_counter += 1
+                    continue
+                else:
+                    current_sp_subjects.append(current_subject) # add to taken subject list
+                    subject_counter += 1 # increase counter by 1
+                    row_counter += 1
+            else:
+                row_counter += 1 # if 0 skip to next row
+    return current_sp_subjects 
 
 def main():
     data = pd.read_csv("subjects.csv")
@@ -244,6 +279,9 @@ def main():
     sp53_23_list = sp53_availability(df)
     sp53_subjects = get_sp53_23_subjects(subject_counter, row_counter, subject_list, sp53_23_list, taken_subject_list, current_sp_subjects)
     taken_subject_list.extend(sp53_subjects)
+    sp51_24_list = sp51_24_availability(df)
+    sp51_24_subjects = get_sp51_24_subjects(subject_counter, row_counter, subject_list, sp51_24_list, taken_subject_list, current_sp_subjects)
+    taken_subject_list.extend(sp51_24_subjects)
     print(taken_subject_list)
     print(len(taken_subject_list) / 4)
 
