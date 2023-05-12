@@ -6,7 +6,8 @@ from flask import render_template, request
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        print(request.form.getlist('mycheckbox'))
+        test = request.form.getlist('mycheckbox')
+        print(test)
         return 'DONE'
     return render_template('index.html', title='Home')
 
