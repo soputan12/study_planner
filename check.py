@@ -1,7 +1,6 @@
 import pandas as pd 
 import numpy as np
 
-""" TODO: change subject checker to class in future """
 def check_prerequisites(current_subject, taken_subject_list): # function to check prerequisites
     taken_subjects = str(taken_subject_list) # made life a bit easier by making this into a var
     credit_point = len(taken_subject_list) * 3 # calculate credit points: 1 subject = 3 credit points
