@@ -22,7 +22,7 @@ header {
     object-fit: cover;
 }
 
-.body {
+body {
     background-color: rebeccapurple;
     background-size: 100%;
     font-size: 1.75em;
