@@ -34,3 +34,10 @@ main {
     text-align: center;
     display: inline-block;
 }
+
+#Level1,#Level2,#Level3 {
+    width: 33.3%;
+    float: left;
+    text-align: center;
+    font-size: 0.65em;
+}
