@@ -22,6 +22,12 @@ header {
     object-fit: cover;
 }
 
+body {
+    background-color: antiquewhite;
+    background-size: 100%;
+    font-size: 1.75em;
+}
+
 main {
     clear: left;
     font-size: 3em;
