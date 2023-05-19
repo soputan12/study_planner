@@ -12,7 +12,7 @@ def index():
         print(f"taken subjects: {taken_subjects} \nelectives: {electives}")
         subject_timetable = check.main(taken_subjects, electives)
         print(f"output: {subject_timetable}, {len(subject_timetable)}")
-        return 'DONE'
+        return f"Output: {subject_timetable}"
     return render_template('index.html', title='Home')
 
 @app.route('/results')
