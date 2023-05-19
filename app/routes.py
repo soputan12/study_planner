@@ -7,8 +7,10 @@ import check
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        test = request.form.getlist('mycheckbox')
-        print(test)
+        taken_subject_list = request.form.getlist('mycheckbox')
+        subject_timetable = check.main(taken_subject_list)
+        print(f"taken subjects: {taken_subject_list}")
+        print(f"output: {subject_timetable}")
         return 'DONE'
     return render_template('index.html', title='Home')
 

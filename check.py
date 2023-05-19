@@ -332,7 +332,7 @@ def get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_lis
                 row_counter += 1 # if 0 skip to next row
     return current_sp_subjects 
 
-def main():
+def main(taken_subject_list):
     data = pd.read_csv("subjects.csv")
     df = pd.DataFrame(data, columns=['subject_code', 'prerequisites', 'sp51_23', 'sp52_23', 'sp53_23', 'sp51_24', 'sp52_24', 'sp53_24'])
     subject_counter = 0 # how many subjects you're taking for 1 study period
@@ -359,14 +359,8 @@ def main():
     sp53_24_list = sp53_24_availability(df)
     sp53_24_subjects = get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_list, taken_subject_list, current_sp_subjects)
     taken_subject_list.extend(sp53_24_subjects)
+    
+    return taken_subject_list
 
 
-
-
-
-
-    print(taken_subject_list)
-    print(len(taken_subject_list))
-
-
-main()              
+# main()              
