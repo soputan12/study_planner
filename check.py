@@ -352,6 +352,7 @@ def main(taken_subjects, electives):
     df = pd.DataFrame(data, columns=['subject_code', 'prerequisites', 'sp51_23', 'sp52_23', 'sp53_23', 'sp51_24', 'sp52_24', 'sp53_24'])
     subject_counter = 0 # how many subjects you're taking for 1 study period
     taken_subject_list = taken_subjects # subjects taken already
+    subject_timetable = []
     row_counter = 0
     current_sp_subjects = [] # subjects your taking in this sp
     elective = electives
@@ -360,23 +361,29 @@ def main(taken_subjects, electives):
     subject_list = create_subject_list(df)
     sp51_subjects = get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list, current_sp_subjects, elective)
     taken_subject_list.extend(sp51_subjects)
+    subject_timetable.append(sp51_subjects)
     sp52_23_list = sp52_availability(df)
     sp52_subjects = get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_list, taken_subject_list, current_sp_subjects, elective)
     taken_subject_list.extend(sp52_subjects)
+    subject_timetable.append(sp52_subjects)
     sp53_23_list = sp53_availability(df)
     sp53_subjects = get_sp53_23_subjects(subject_counter, row_counter, subject_list, sp53_23_list, taken_subject_list, current_sp_subjects, elective)
     taken_subject_list.extend(sp53_subjects)
+    subject_timetable.append(sp53_subjects)
     sp51_24_list = sp51_24_availability(df)
     sp51_24_subjects = get_sp51_24_subjects(subject_counter, row_counter, subject_list, sp51_24_list, taken_subject_list, current_sp_subjects, elective)
     taken_subject_list.extend(sp51_24_subjects)
+    subject_timetable.append(sp51_24_subjects)
     sp52_24_list = sp52_24_availability(df)
     sp52_24_subjects = get_sp52_24_subjects(subject_counter, row_counter, subject_list, sp52_24_list, taken_subject_list, current_sp_subjects, elective)
     taken_subject_list.extend(sp52_24_subjects)
+    subject_timetable.append(sp51_24_subjects)
     sp53_24_list = sp53_24_availability(df)
     sp53_24_subjects = get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_list, taken_subject_list, current_sp_subjects, elective)
     taken_subject_list.extend(sp53_24_subjects)
+    subject_timetable.append(sp51_24_subjects)
     
-    return taken_subject_list
+    return subject_timetable
 
 
 # main()              
