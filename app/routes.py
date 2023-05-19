@@ -12,6 +12,7 @@ def index():
         print(f"taken subjects: {taken_subjects} \nelectives: {electives}")
         subject_timetable = check.main(taken_subjects, electives)
         print(f"output: {subject_timetable}, {len(subject_timetable)}")
+        print(', '.join(subject_timetable[0])) # printing without [] and ""
         return f"Output: {subject_timetable}"
     return render_template('index.html', title='Home')
 
