@@ -1,7 +1,7 @@
 import pandas as pd 
 import numpy as np
 
-def check_prerequisites(current_subject, taken_subject_list, elective): # function to check prerequisites
+def check_prerequisites(current_subject, taken_subject_list, elective, sp_counter): # function to check prerequisites
     taken_subjects = str(taken_subject_list) # made life a bit easier by making this into a var
     credit_point = len(taken_subject_list) * 3 # calculate credit points: 1 subject = 3 credit points
     if current_subject == "CP1404":
@@ -66,7 +66,9 @@ def check_prerequisites(current_subject, taken_subject_list, elective): # functi
         else:
             return False
     elif current_subject == "CP3405":
-        if credit_point >= 18:
+        if sp_counter == 4:
+            return False
+        elif credit_point >= 18:
             return True
         else:
             return False
@@ -137,7 +139,7 @@ def create_subject_list(df): # creates a list with subject codes for indexing
         subject_list.append(i)
     return subject_list
 
-def get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list, current_sp_subjects, elective): # function to get sp51 2023 subjects
+def get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list, current_sp_subjects, elective, sp_counter): # function to get sp51 2023 subjects
     while subject_counter < 4: # end condition for loop
         current_subject = str(subject_list[row_counter])
         if current_subject in str(taken_subject_list): # checks if current subjected has already been taken
@@ -145,7 +147,7 @@ def get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_lis
             continue
         else:
             if sp51_23_list[row_counter] == 1: # if there is 1 in the specific cell
-                check = check_prerequisites(current_subject, taken_subject_list, elective)
+                check = check_prerequisites(current_subject, taken_subject_list, elective, sp_counter)
                 if check == True:
                     current_sp_subjects.append(current_subject)
                     subject_counter += 1
@@ -171,7 +173,7 @@ def sp52_availability(df):
             sp52_23_list.append(0)
     return sp52_23_list
 
-def get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_list, taken_subject_list, current_sp_subjects, elective): 
+def get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_list, taken_subject_list, current_sp_subjects, elective, sp_counter): 
     current_sp_subjects = []
     try:
         while subject_counter < 4: # end condition for loop
@@ -181,7 +183,7 @@ def get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_lis
                 continue
             else:
                 if sp52_23_list[row_counter] == 1: # if there is 1 in the specific cell
-                    check = check_prerequisites(current_subject, taken_subject_list, elective)
+                    check = check_prerequisites(current_subject, taken_subject_list, elective, sp_counter)
                     if check == True:
                         current_sp_subjects.append(current_subject)
                         subject_counter += 1
@@ -209,7 +211,7 @@ def sp53_availability(df):
             sp53_23_list.append(0)
     return sp53_23_list     
 
-def get_sp53_23_subjects(subject_counter, row_counter, subject_list, sp53_23_list, taken_subject_list, current_sp_subjects, elective): 
+def get_sp53_23_subjects(subject_counter, row_counter, subject_list, sp53_23_list, taken_subject_list, current_sp_subjects, elective, sp_counter): 
     current_sp_subjects = []
     while subject_counter < 4: # end condition for loop
         current_subject = str(subject_list[row_counter])
@@ -218,7 +220,7 @@ def get_sp53_23_subjects(subject_counter, row_counter, subject_list, sp53_23_lis
             continue
         else:
             if sp53_23_list[row_counter] == 1: # if there is 1 in the specific cell
-                check = check_prerequisites(current_subject, taken_subject_list, elective)
+                check = check_prerequisites(current_subject, taken_subject_list, elective, sp_counter)
                 if check == True:
                     current_sp_subjects.append(current_subject)
                     subject_counter += 1
@@ -244,7 +246,7 @@ def sp51_24_availability(df):
             sp51_24_list.append(0)
     return sp51_24_list     
 
-def get_sp51_24_subjects(subject_counter, row_counter, subject_list, sp51_24_list, taken_subject_list, current_sp_subjects, elective): 
+def get_sp51_24_subjects(subject_counter, row_counter, subject_list, sp51_24_list, taken_subject_list, current_sp_subjects, elective, sp_counter): 
     current_sp_subjects = []
     try:
         while subject_counter < 4: # end condition for loop
@@ -254,7 +256,7 @@ def get_sp51_24_subjects(subject_counter, row_counter, subject_list, sp51_24_lis
                 continue
             else:
                 if sp51_24_list[row_counter] == 1: # if there is 1 in the specific cell
-                    check = check_prerequisites(current_subject, taken_subject_list, elective)
+                    check = check_prerequisites(current_subject, taken_subject_list, elective, sp_counter)
                     if check == True:
                         current_sp_subjects.append(current_subject)
                         subject_counter += 1
@@ -282,7 +284,7 @@ def sp52_24_availability(df):
             sp52_24_list.append(0)
     return sp52_24_list   
 
-def get_sp52_24_subjects(subject_counter, row_counter, subject_list, sp52_24_list, taken_subject_list, current_sp_subjects, elective): 
+def get_sp52_24_subjects(subject_counter, row_counter, subject_list, sp52_24_list, taken_subject_list, current_sp_subjects, elective, sp_counter): 
     current_sp_subjects = []
     try:
         while subject_counter < 4: # end condition for loop
@@ -292,7 +294,7 @@ def get_sp52_24_subjects(subject_counter, row_counter, subject_list, sp52_24_lis
                 continue
             else:
                 if sp52_24_list[row_counter] == 1: # if there is 1 in the specific cell
-                    check = check_prerequisites(current_subject, taken_subject_list, elective)
+                    check = check_prerequisites(current_subject, taken_subject_list, elective, sp_counter)
                     if check == True:
                         current_sp_subjects.append(current_subject)
                         subject_counter += 1
@@ -320,7 +322,7 @@ def sp53_24_availability(df):
             sp53_24_list.append(0)
     return sp53_24_list   
 
-def get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_list, taken_subject_list, current_sp_subjects, elective): 
+def get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_list, taken_subject_list, current_sp_subjects, elective, sp_counter): 
     current_sp_subjects = []
     while subject_counter < 4: # end condition for loop
         if row_counter == 26:
@@ -331,7 +333,7 @@ def get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_lis
             continue
         else:
             if sp53_24_list[row_counter] == 1: # if there is 1 in the specific cell
-                check = check_prerequisites(current_subject, taken_subject_list, elective)
+                check = check_prerequisites(current_subject, taken_subject_list, elective, sp_counter)
                 if check == True:
                     current_sp_subjects.append(current_subject)
                     subject_counter += 1
@@ -356,30 +358,36 @@ def main(taken_subjects, electives):
     row_counter = 0
     current_sp_subjects = [] # subjects your taking in this sp
     elective = electives
+    sp_counter = 0
 
     sp51_23_list = sp51_availability(df)
     subject_list = create_subject_list(df)
-    sp51_subjects = get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list, current_sp_subjects, elective)
+    sp51_subjects = get_sp51_23_subjects(subject_counter, row_counter, subject_list, sp51_23_list, taken_subject_list, current_sp_subjects, elective, sp_counter)
     taken_subject_list.extend(sp51_subjects)
     subject_timetable.append(sp51_subjects)
+    sp_counter += 1
     sp52_23_list = sp52_availability(df)
-    sp52_subjects = get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_list, taken_subject_list, current_sp_subjects, elective)
+    sp52_subjects = get_sp52_23_subjects(subject_counter, row_counter, subject_list, sp52_23_list, taken_subject_list, current_sp_subjects, elective, sp_counter)
     taken_subject_list.extend(sp52_subjects)
     subject_timetable.append(sp52_subjects)
+    sp_counter += 1
     sp53_23_list = sp53_availability(df)
-    sp53_subjects = get_sp53_23_subjects(subject_counter, row_counter, subject_list, sp53_23_list, taken_subject_list, current_sp_subjects, elective)
+    sp53_subjects = get_sp53_23_subjects(subject_counter, row_counter, subject_list, sp53_23_list, taken_subject_list, current_sp_subjects, elective, sp_counter)
     taken_subject_list.extend(sp53_subjects)
     subject_timetable.append(sp53_subjects)
+    sp_counter += 1
     sp51_24_list = sp51_24_availability(df)
-    sp51_24_subjects = get_sp51_24_subjects(subject_counter, row_counter, subject_list, sp51_24_list, taken_subject_list, current_sp_subjects, elective)
+    sp51_24_subjects = get_sp51_24_subjects(subject_counter, row_counter, subject_list, sp51_24_list, taken_subject_list, current_sp_subjects, elective, sp_counter)
     taken_subject_list.extend(sp51_24_subjects)
     subject_timetable.append(sp51_24_subjects)
+    sp_counter += 1
     sp52_24_list = sp52_24_availability(df)
-    sp52_24_subjects = get_sp52_24_subjects(subject_counter, row_counter, subject_list, sp52_24_list, taken_subject_list, current_sp_subjects, elective)
+    sp52_24_subjects = get_sp52_24_subjects(subject_counter, row_counter, subject_list, sp52_24_list, taken_subject_list, current_sp_subjects, elective, sp_counter)
     taken_subject_list.extend(sp52_24_subjects)
     subject_timetable.append(sp52_24_subjects)
+    sp_counter += 1
     sp53_24_list = sp53_24_availability(df)
-    sp53_24_subjects = get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_list, taken_subject_list, current_sp_subjects, elective)
+    sp53_24_subjects = get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_list, taken_subject_list, current_sp_subjects, elective, sp_counter)
     taken_subject_list.extend(sp53_24_subjects)
     subject_timetable.append(sp53_24_subjects)
     
