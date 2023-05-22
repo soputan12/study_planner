@@ -29,7 +29,6 @@ body {
 }
 
 main {
-    clear: left;
     font-size: 3em;
     text-align: center;
     display: inline-block;
@@ -43,8 +42,15 @@ main {
 }
 
 #Electives{
-    margin-top: auto;
-    float: left;
+    width: 100%;
+    margin-top: 1em;
+    float: center;
     text-align: center;
     font-size: 0.65em;
+}
+
+.submit {
+    margin-top: auto;
+    float:left;
+    text-align: center;
 }
