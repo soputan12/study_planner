@@ -66,8 +66,9 @@ def check_prerequisites(current_subject, taken_subject_list, elective, sp_counte
         else:
             return False
     elif current_subject == "CP3405":
-        if sp_counter == 4:
-            return False
+        if elective == "CP3417":
+            if sp_counter == 4:
+                return False
         elif credit_point >= 18:
             return True
         else:
