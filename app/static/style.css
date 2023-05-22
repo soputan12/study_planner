@@ -43,14 +43,21 @@ main {
 
 #Electives{
     width: 100%;
-    margin-top: 1em;
-    float: center;
+    float: left;
     text-align: center;
     font-size: 0.65em;
+    border-top: 2em;
 }
 
 .submit {
     margin-top: auto;
     float: center;
     text-align: center;
+}
+
+.elective{
+    float: center;
+    text-align: center;
+    font-size: 0.3em;
+    margin-top: auto;
 }
