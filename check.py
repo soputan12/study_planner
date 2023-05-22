@@ -285,7 +285,7 @@ def sp52_24_availability(df):
 def get_sp52_24_subjects(subject_counter, row_counter, subject_list, sp52_24_list, taken_subject_list, current_sp_subjects, elective): 
     current_sp_subjects = []
     try:
-        while subject_counter < 5: # end condition for loop
+        while subject_counter < 4: # end condition for loop
             current_subject = str(subject_list[row_counter])
             if current_subject in str(taken_subject_list): # checks if current subjected has already been taken
                 row_counter += 1
@@ -377,11 +377,11 @@ def main(taken_subjects, electives):
     sp52_24_list = sp52_24_availability(df)
     sp52_24_subjects = get_sp52_24_subjects(subject_counter, row_counter, subject_list, sp52_24_list, taken_subject_list, current_sp_subjects, elective)
     taken_subject_list.extend(sp52_24_subjects)
-    subject_timetable.append(sp51_24_subjects)
+    subject_timetable.append(sp52_24_subjects)
     sp53_24_list = sp53_24_availability(df)
     sp53_24_subjects = get_sp53_24_subjects(subject_counter, row_counter, subject_list, sp53_24_list, taken_subject_list, current_sp_subjects, elective)
     taken_subject_list.extend(sp53_24_subjects)
-    subject_timetable.append(sp51_24_subjects)
+    subject_timetable.append(sp53_24_subjects)
     
     return subject_timetable
 
