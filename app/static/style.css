@@ -38,8 +38,8 @@ main {
 #Level1,#Level2,#Level3 {
     width: 33.3%;
     float: left;
-    text-align: center;
-    font-size: 0.65em;
+    text-align: left;
+    font-size: 0.3em;
 }
 
 #Electives{
