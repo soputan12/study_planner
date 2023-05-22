@@ -20,5 +20,5 @@ def index():
 def results(subject_timetable):
     # print(f"output: {subject_timetable}, {len(subject_timetable)}")
     # print(', '.join(subject_timetable[0])) # printing without [] and ""
-    return render_template('results.html', title='Results')
-    # return f"RESULTS PAGE \nOutput: {subject_timetable}, {len(subject_timetable)}"
+    #return render_template('results.html', title='Results')
+    return f"RESULTS PAGE \nOutput: {subject_timetable}, {len(subject_timetable)}"
